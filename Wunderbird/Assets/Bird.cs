@@ -232,11 +232,5 @@ public class Bird : MonoBehaviour
         GameObject.Find("Bird").GetComponent<Bird>().isAlive = false;
         audioSource.PlayOneShot(audioClip[1]);
         anim.SetTrigger("Die");
-        Invoke("ReloadLevel", 1f);
-    }
-
-    public void ReloadLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

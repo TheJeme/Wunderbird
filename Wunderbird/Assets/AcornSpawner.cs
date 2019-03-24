@@ -25,7 +25,10 @@ public class AcornSpawner : MonoBehaviour
 
     void SpawnAcorn()
     {
-        Vector2 randomPos = new Vector2(Random.Range(-2.1f, 2.1f), Random.Range(-4f, 4f));
-        Instantiate(acorn, randomPos, Quaternion.identity);
+        if (GameObject.Find("Bird").GetComponent<Bird>().isAlive)
+        {
+            Vector2 randomPos = new Vector2(Random.Range(-2.1f, 2.1f), Random.Range(-4f, 4f));
+            Instantiate(acorn, randomPos, Quaternion.identity);
+        }
     }
 }
