@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AcornSpawner : MonoBehaviour
 {
-    public int acornsCollected = 0;
     public GameObject acorn;
     public bool isAcorn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +19,13 @@ public class AcornSpawner : MonoBehaviour
         if (!isAcorn)
         {
             isAcorn = true;
-            Invoke("SpawnAcorn", Random.Range(7f,12f));
+            Invoke("SpawnAcorn", Random.Range(8f,17f));
         }
     }
 
     void SpawnAcorn()
     {
-        if (GameObject.Find("Bird").GetComponent<Bird>().isAlive)
+        if (GameObject.Find("Blue Bird").GetComponent<Bird>().isAlive)
         {
             Vector2 randomPos = new Vector2(Random.Range(-2.1f, 2.1f), Random.Range(-4f, 4f));
             Instantiate(acorn, randomPos, Quaternion.identity);

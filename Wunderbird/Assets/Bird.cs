@@ -27,6 +27,8 @@ public class Bird : MonoBehaviour
 
     private bool isGoingRight = true;
 
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -40,14 +42,6 @@ public class Bird : MonoBehaviour
     void Update()
     {
         pointsText.text = points.ToString();
-
-        if (isAlive)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Flap();
-            }
-        }
     }
 
     void FixedUpdate()
@@ -86,7 +80,7 @@ public class Bird : MonoBehaviour
         isFlap = true;
     }
 
-    void ClearSpikes()
+    public void ClearSpikes()
     {
         foreach (Transform child in spawnedSpikes.transform)
         {
@@ -126,8 +120,20 @@ public class Bird : MonoBehaviour
             case 17:
                 SpawnSpikeLeftSide(5);
                 break;
-            default:
+            case 18:
+            case 19:
+            case 20:
+            case 21:
                 SpawnSpikeLeftSide(6);
+                break;
+            case 22:
+            case 23:
+            case 24:
+            case 25:
+                SpawnSpikeLeftSide(7);
+                break;
+            default:
+                SpawnSpikeLeftSide(8);
                 break;
         }
     }
@@ -229,7 +235,7 @@ public class Bird : MonoBehaviour
 
     public void Die()
     {
-        GameObject.Find("Bird").GetComponent<Bird>().isAlive = false;
+        GameObject.Find("Blue Bird").GetComponent<Bird>().isAlive = false;
         audioSource.PlayOneShot(audioClip[1]);
         anim.SetTrigger("Die");
     }

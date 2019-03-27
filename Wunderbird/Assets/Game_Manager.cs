@@ -11,6 +11,7 @@ public class Game_Manager : MonoBehaviour
     public GameObject endCanvas;
     public GameObject playareaCanvas;
 
+
     public GameObject bronzeMedal;
     public GameObject silverMedal;
     public GameObject goldMedal;
@@ -18,40 +19,46 @@ public class Game_Manager : MonoBehaviour
     public Text scoretxt;
     public Text highScoretxt;
 
+  
+
     public int highScore = 0;
     string highScoreKey = "HighScore";
 
     // Start is called before the first frame update
     void Start()
     {
-        highScore = PlayerPrefs.GetInt(highScoreKey, 0);
+        highScore = PlayerPrefs.GetInt(highScoreKey, 0);     
+        //PlayerPrefs.DeleteAll();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Bird").GetComponent<Bird>().isStarted == true)
+
+
+
+        if (GameObject.Find("Blue Bird").GetComponent<Bird>().isStarted == true)
         {
             startCanvas.SetActive(false);
             pointsCanvas.SetActive(true);
         }
 
-        if (GameObject.Find("Bird").GetComponent<Bird>().isAlive == false)
+        if (GameObject.Find("Blue Bird").GetComponent<Bird>().isAlive == false)
         {
-            endCanvas.SetActive(true);
             pointsCanvas.SetActive(false);
             playareaCanvas.SetActive(false);
-            int score = GameObject.Find("Bird").GetComponent<Bird>().points;
+            int score = GameObject.Find("Blue Bird").GetComponent<Bird>().points;
 
             scoretxt.text = score.ToString();
             highScoretxt.text = highScore.ToString();
+                endCanvas.SetActive(true);
 
-            if (score <= 25)
-                bronzeMedal.SetActive(true);
-            else if (score <= 50)
-                silverMedal.SetActive(true);
-            else
-                goldMedal.SetActive(true);
+                if (score <= 25)
+                    bronzeMedal.SetActive(true);
+                else if (score <= 50)
+                    silverMedal.SetActive(true);
+                else
+                    goldMedal.SetActive(true);           
 
             if (score > highScore)
             {
@@ -62,6 +69,8 @@ public class Game_Manager : MonoBehaviour
         }
     }
 
+
+   
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

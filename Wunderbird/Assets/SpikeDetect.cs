@@ -20,13 +20,9 @@ public class SpikeDetect : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && GameObject.Find("Bird").GetComponent<Bird>().isAlive)
+        if (collision.gameObject.tag == "Player" && GameObject.Find("Blue Bird").GetComponent<Bird>().isAlive)
         {
-            GameObject.Find("Bird").GetComponent<Bird>().Die();
+            GameObject.Find("Blue Bird").GetComponent<Bird>().Die();
         }
-    }
-    public void ReloadLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

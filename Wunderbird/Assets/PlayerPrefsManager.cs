@@ -10,8 +10,10 @@ public class PlayerPrefsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        highScore = PlayerPrefs.GetInt(highScoreKey, 0);
+        highScore = PlayerPrefs.GetInt(highScoreKey, 0);    
     }
+
+    
 
     // Update is called once per frame
     void Update()
